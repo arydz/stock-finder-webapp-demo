@@ -1,0 +1,35 @@
+.container-large-box {
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  border-radius: 8px;
+  margin-left: 80px;
+  margin-right: 80px;
+  height: auto;
+}
+
+button {
+  padding: 1em;
+}
+
+input,
+button {
+  width: 100%;
+  border: 0;
+}
+
+button:hover,
+button:focus {
+  background: #283593;
+  outline: 0;
+}
+
+.response-card {
+  margin-top: 10px;
+  padding: 2em;
+  border-radius: 8px;
+  justify-content: center;
+  display: flex;
+  color: #388E3C;
+  font-weight: bold;
+}

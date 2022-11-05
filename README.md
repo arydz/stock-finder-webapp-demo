@@ -1,6 +1,71 @@
-# StockFinderWebappDemo
+# StockFinderWebapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7
+
+## Required installations (described in following points)
+```
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+ /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                |___/
+
+
+Angular CLI: 14.2.7
+Node: 18.12.0 (Unsupported)
+Package Manager: npm 8.19.2
+OS: win32 x64
+
+Angular: 14.2.8
+... animations, common, compiler, compiler-cli, core, forms
+... platform-browser, platform-browser-dynamic, router
+
+Package                         Version
+---------------------------------------------------------
+@angular-devkit/architect       0.1402.7
+@angular-devkit/build-angular   14.2.7
+@angular-devkit/core            14.2.7
+@angular-devkit/schematics      14.2.7
+@angular/cdk                    14.2.6
+@angular/cli                    14.2.7
+@angular/material               14.2.6
+@schematics/angular             14.2.7
+rxjs                            7.5.7
+```
+
+## How to run
+
+### Helpful but, not required
+1. Install NVM (Node Version mannager) https://tecadmin.net/how-to-install-nvm-on-ubuntu-20-04/
+2. Use version 14.2.7
+
+### Install NodeJs and NPM
+1. Install NodeJs from [NodeJs Official Page](https://nodejs.org/en) or via NVM
+2. Open Terminal
+3. Go to your file project
+4. Run in terminal: ```npm install -g @angular/cli``` or install specific version ```npm install -g @angular/cli@14.2.7```
+  - https://stackoverflow.com/questions/43344600/how-to-install-a-specific-version-of-angular-with-angular-cli
+5. Then: ```npm install```
+  - if errors received and sudo can't be used (also it's no suggested)
+  - fixing npm permission issue, with:
+    ```
+    - Run “npm config get prefix” in your terminal. This will give the path of global node_modules: For ex: /usr/local
+    - Change the user permissions for this folder by using following command:
+    - sudo chown -R <user_id> /usr/local/
+
+    Navigate to your application folder where your local node_modules reside.
+    - Run the similar command
+    - sudo chown -R <user_id> node_modules/
+    ```
+  - Useful link https://kaustubhtalathi.medium.com/fixing-npm-permission-issue-f3d88a7a4ab4
+6. (Optional) Adjusting angular-devkit/build-angular can be required
+  - use this command `npm i @angular-devkit/build-angular@14.2.7 --force`
+
+### Run application
+
+1. Use command ```ng serve```
+2. Navigate to: [http://localhost:4200/](http://localhost:4200/)
 
 ## Development server
 

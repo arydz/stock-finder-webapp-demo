@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container" autosize>
+  <mat-sidenav #drawer mode="side" disableClose="true" opened="true">
+    <mat-toolbar style="color: cornflowerblue">
+      <button mat-mini-fab (click)="isExpanded = !isExpanded" style="background-color: cornflowerblue; margin: 10px;">
+        <mat-icon class="white-icon" aria-label="Menu">menu</mat-icon>
+      </button>
+      <span *ngIf="isExpanded">
+        Stock Finder Demo
+      </span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a *ngFor="let item of menuItems" mat-list-item [routerLink]="'/' + item.title">
+        <div *ngIf="isExpanded">
+          <span title="{{ item.title| titlecase }}" style="color: cornflowerblue;">
+            <mat-icon>{{item.iconName}}</mat-icon>
+          </span>
+          <span style="margin-left: 5px;">{{ item.title | titlecase }}</span>
+        </div>
+        <div *ngIf="!isExpanded" class="icon-layout">
+          <span class="custom-icon" title="{{ item.title| titlecase }}" style="color: cornflowerblue;">
+            <mat-icon>{{item.iconName}}</mat-icon>
+          </span>
+        </div>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
