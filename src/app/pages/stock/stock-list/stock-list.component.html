@@ -1,0 +1,79 @@
+<div class="container-large-box" *ngIf="!isFetched">
+  <mat-progress-bar layout-align="center center" mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div class="container-large-box mat-elevation-z8">
+  <div *ngIf="isFetched">
+
+    <form class="container-form" [formGroup]="searchParams" #formDirective="ngForm"
+      (ngSubmit)="onSubmit(searchParams.value, formDirective)">
+      <mat-grid-list cols="8" rowHeight="60px">
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Ticker</mat-label>
+            <input matInput placeholder="" formControlName="ticker" maxlength="256" />
+            <mat-error *ngIf="hasError('ticker', 'maxLength')">Ticker is longer than 256 charaters</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="" formControlName="title" maxlength="256" />
+            <mat-error *ngIf="hasError('title', 'maxLength')">Title is longer than 256 charaters</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-card-actions style="width: 99%;">
+            <button type="button" mat-raised-button (click)="searchParams.reset()" >
+              <mat-icon aria-hidden="false" color="accent" aria-label="clear icon">clear</mat-icon>
+              Clear
+            </button>
+          </mat-card-actions>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-card-actions style="width: 99%;">
+            <button type="submit" mat-raised-button>
+              <mat-icon aria-hidden="false" color="primary" aria-label="search icon">search</mat-icon>
+              Search
+            </button>
+          </mat-card-actions>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+
+    <table mat-table matSort (matSortChange)="sortData($event)" [dataSource]="dataSource.content">
+
+      <ng-container matColumnDef="ticker">
+        <th id="ticker" class="narrow" mat-header-cell *matHeaderCellDef mat-sort-header>
+          Ticker
+        </th>
+        <td class="narrow" mat-cell *matCellDef="let stock">
+          <span class="badge">{{stock.ticker}}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th id="title" class="narrow" mat-header-cell *matHeaderCellDef mat-sort-header>
+          Title
+        </th>
+        <td class="narrow" mat-cell *matCellDef="let stock">
+          <span>{{stock.title}}</span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator [length]="dataSource.totalElements" [pageSize]="dataSource.size"
+      (page)="pageEvent = $event; onPaginateChange($event)" [pageSizeOptions]="[20, 30, 40, 50, 100]"
+      showFirstLastButtons>
+    </mat-paginator>
+
+  </div>
+</div>

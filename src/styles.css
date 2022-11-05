@@ -1,1 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
+
+table {
+  width: 100%;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 10%;
+}
+
+.narrow {
+  width: 5%;
+}
+
+.wide {
+  width: 20%;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-toolbar-row {
+  justify-content: center;
+}
+
+.input-full-width {
+  margin-left: 25px;
+  margin-right: 25px;
+  width: 100%;
+}
+
+/* Allow to put element on the left and right side in mat card header */
+/* https://stackoverflow.com/questions/49858542/align-left-and-right-in-mat-card-title */
+.mat-card-header-text{
+  width: 100% !important;
+}
+
+.container-large-box {
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.danger-snack-bar {
+  background-color: #ffcdd2;
+  color: #d32f2f;
+}
+
+.mat-snack-bar-container {
+  text-align: center;
+  font-weight: bold;
+}
+
+.mat-simple-snackbar {
+  display: inline-block !important;
+  font-size: 18px;
+}
