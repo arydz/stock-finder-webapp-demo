@@ -62,6 +62,13 @@ rxjs                            7.5.7
 6. (Optional) Adjusting angular-devkit/build-angular can be required
   - use this command `npm i @angular-devkit/build-angular@14.2.7 --force`
 
+### Docker
+1. Build docker image with this command `docker build -t stock-finder-webapp-demo:latest .`
+2. Start docker container based on this image with this command `docker run -p 4200:4200 --name docker-sf-web-demo stock-finder-webapp-demo`
+   1. Instead of a docker command, running webapp container can be done via `docker compose up` command , available in this repository: https://github.com/arydz/stock-finder-service-demo/tree/master/docker
+   2. This approach makes also a service application starts
+   3. Stock finder service requires to run infrastructure containers, from this file https://github.com/arydz/stock-finder-service-demo/blob/master/docker/docker-compose.infrastructure.yaml 
+
 ### Run application
 
 1. Use command ```ng serve```
