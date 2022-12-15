@@ -7,18 +7,14 @@ import { StockService } from './../../../service/stock.service';
   templateUrl: './stock-import.component.html',
   styleUrls: ['./stock-import.component.css']
 })
-export class StockImportComponent implements OnInit {
+export class StockImportComponent {
 
   constructor(private stockService: StockService) { }
 
   response$: Observable<String>
 
-  ngOnInit(): void {
-  }
-
   importStockData() {
     this.response$ = this.stockService.importStockData();
-
   }
 
 }

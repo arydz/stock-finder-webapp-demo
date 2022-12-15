@@ -1,0 +1,71 @@
+<div class="container-large-box" *ngIf="!isFetched">
+  <mat-progress-bar layout-align="center center" mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div class="container-large-box mat-elevation-z8">
+  <div *ngIf="isFetched">
+    <form class="container-form" [formGroup]="fileImportForm" #formDirective="ngForm" (ngSubmit)="onSubmit(fileImportForm.value, formDirective)">
+      <mat-grid-list cols="8" rowHeight="60px">
+
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Select Import Type</mat-label>
+            <mat-select [(value)]="selectedImportType">
+              <mat-option *ngFor="let type of importTypes" [value]="type">
+                {{getImportTypeLabel(type)}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+          <label class="btn btn-default">
+            <input type="file" formControlName="file" (change)="selectFile($event)">
+          </label>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Select Chart Timeframe</mat-label>
+            <mat-select formControlName="chartTimeframeType" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let type of chartTimeframeTypes" [value]="type.name">
+                {{ type.description }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('chartTimeframeType', 'required')">Please choose a Chart Timeframe</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Select Extraction Mode</mat-label>
+            <mat-select formControlName="extractionMode" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let mode of extractionModes" [value]="mode.name">
+                {{ mode.description }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('extractionMode', 'required')">Please choose a Extraction mode</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="8" [rowspan]="1">
+          <mat-card-actions class="input-full-width">
+
+            <button
+              mat-flat-button color="primary"
+              [disabled]="!selectedFiles">
+              <mat-icon aria-hidden="false" aria-label="send icon">send</mat-icon>
+              <span>
+                Submit
+              </span>
+            </button>
+
+          </mat-card-actions>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+  </div>
+</div>
