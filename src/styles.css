@@ -49,10 +49,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .container-large-box {
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding: 10px;
+  margin: 16px;
+  border-radius: 8px;
+  margin-left: 80px;
+  margin-right: 80px;
+  height: auto;
+}
+
+.info-snack-bar {
+  background-color: #bbdefb;
+  color: #1565c0;
+}
+
+.success-snack-bar {
+  background-color: #c8e6c9;
+  color: #007E33;
 }
 
 .danger-snack-bar {

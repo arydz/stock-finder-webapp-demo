@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AppConfig } from '../config/app-config.model';
 
-const httpOptions: Object = {
+const jsonHttpOptions: Object = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
   }),
@@ -13,28 +13,34 @@ const httpOptions: Object = {
 @Injectable({
   providedIn: 'root'
 })
-export class ApiHttpClient extends HttpClient {
+export class ApiHttpClient {
   public baseUrl: string;
 
-  public constructor(handler: HttpHandler, config: AppConfig) {
-    super(handler);
+  public constructor(private httpClient: HttpClient, config: AppConfig) {
 
     this.baseUrl = config.backendUrl;
   }
 
-  public getUrl(): string {
-    return this.baseUrl;
-  }
-
-  public override get<T>(url: string, options?: Object): Observable<T> {
+  public get<T>(url: string, options?: Object): Observable<T> {
 
     url = this.baseUrl + url;
-    return super.get<T>(url, options);
+    return this.httpClient.get<T>(url, options);
   }
 
-  public override post<T>(url: string, payload: Object): Observable<T> {
+  public post<T>(url: string, payload: Object): Observable<T> {
 
     url = this.baseUrl + url;
-    return super.post<T>(url, payload, httpOptions);
+    return this.httpClient.post<T>(url, payload, jsonHttpOptions);
+  }
+
+  public postFormData<T>(url: string, formData: FormData): Observable<T> {
+
+    url = this.baseUrl + url;
+    return this.httpClient.post<T>(url, formData);
+  }
+
+  public put<T>(url: string, formData: FormData): Observable<T> {
+    url = this.baseUrl + url;
+    return this.httpClient.put<T>(url, formData)
   }
 }

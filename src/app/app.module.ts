@@ -30,6 +30,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SfErrorHandlerService } from './service/sf-error-handler.service';
 import { AppConfig } from './shared/config/app-config.model';
+import { ChartImportComponent } from './pages/stock/chart-import/chart-import.component';
 
 export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
   return () => {
@@ -44,7 +45,8 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
     StockComponent,
     DashboardComponent,
     StockListComponent,
-    StockImportComponent
+    StockImportComponent,
+    ChartImportComponent
   ],
   imports: [
     BrowserModule,
